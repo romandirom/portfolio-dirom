@@ -1,0 +1,1316 @@
+:root {
+  --site-padding: 2rem;
+  --site-max-width: 1800px;
+  /* Margini fluidi ridotti per evitare l'effetto "colonne vuote" */
+  --site-horizontal-padding: 2.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Ottimizzazione globale per animazioni e GIF */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+img, 
+.project-hero, 
+.category-card {
+  /* Assicura che le GIF e le immagini siano nitide e non sfarfallino */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+/* Project Details Layout - Fluid Full Width */
+.project-cover {
+  width: 100%;
+  margin: 100px auto 2rem auto; /* Aggiunto 100px per clear navbar */
+  height: 70vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+
+
+.project-description,
+.gallery {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  padding: 4rem var(--site-horizontal-padding);
+  margin: 0 auto;
+}
+
+/* Ensure all text inside white sections is dark and readable */
+.project-description p,
+.project-description ul,
+.project-description li,
+.project-description h2,
+.gallery h2 {
+  color: #333333 !important;
+}
+
+.gallery {
+  padding-top: 0;
+  /* Align gallery closer to description */
+}
+
+.project-description a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 24pt;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.25rem; /* Aumentata per un look più "editoriale" */
+  line-height: 1.2;
+}
+
+.project-description {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: justify;
+}
+
+.project-description p,
+.project-description ul,
+.project-description li {
+  font-size: 14pt;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+p {
+  font-size: 14pt;
+  font-weight: 400;
+  font-family: 'Lato', sans-serif;
+  text-transform: none;
+  line-height: 1.8; /* Aumentata per leggibilità professionale */
+  letter-spacing: 0.02rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Theme 1: Default (Home, About, Contatti, Interior) */
+body.theme-default {
+  background-color: #ffffff; /* Sfondo bianco per pulizia margini 5% */
+  color: #C69881;
+}
+
+.theme-default .contact-banner {
+  background-color: #C69881;
+  color: #ffffff;
+}
+
+.theme-default .contact-banner * {
+  color: #ffffff;
+}
+
+
+/* Theme 2: Outdoor */
+body.theme-outdoor {
+  background-color: #ffffff;
+  color: #89846E;
+}
+
+.theme-outdoor .contact-banner {
+  background-color: #89846E;
+  color: #ffffff;
+}
+
+.theme-outdoor .contact-banner * {
+  color: #ffffff;
+}
+
+
+/* Theme 3: Lighting */
+body.theme-lighting {
+  background-color: #ffffff;
+  color: #A7D1CD;
+}
+
+.theme-lighting .contact-banner {
+  background-color: #A7D1CD;
+  color: #ffffff;
+}
+
+.theme-lighting .contact-banner * {
+  color: #ffffff;
+}
+
+
+/* --- Navbar Consolidated & Dropdown --- */
+.progetto-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  aspect-ratio: 1 / 1;
+  background-color: #f7f7f7;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Reso più scattante */
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex !important;
+  justify-content: center;
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: none; /* Rimosso limite 1400px per simmetria su schermo intero */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0 5%; /* 5% fisso per eleganza e simmetria */
+}
+
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.7) !important; /* Semi-trasparente per glassmorphism */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.02);
+}
+
+
+
+.navbar.scrolled .navbar-inner {
+  padding: 0.8rem 5% !important;
+}
+
+
+
+.navbar a, .dropbtn {
+  text-decoration: none;
+  color: inherit !important;
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.nav-logo-link {
+  margin-right: auto; /* Ripristinato per spingere il menù tutto a destra */
+}
+
+.navbar a img {
+  height: 45px; /* Leggermente più grande come da screen */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.navbar a:hover img {
+  transform: scale(1.1);
+}
+
+.navbar a:not(.nav-logo-link):not(.dropbtn)::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Button (PROGETTI) */
+.dropbtn {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: visible !important; /* Impedisce il taglio della chevron */
+}
+
+
+.dropbtn::after {
+  content: '' !important;
+  display: inline-block !important;
+  width: 7px !important; /* Leggermente più grande per stabilità */
+  height: 7px !important;
+  border-top: none !important; /* Reset assoluto */
+  border-left: none !important;
+  border-right: 2.5px solid currentColor !important; /* Più spesso (Grassetto) */
+  border-bottom: 2.5px solid currentColor !important;
+  transform: translateY(-2px) rotate(45deg) !important;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  opacity: 0.8 !important;
+  pointer-events: none;
+}
+
+.dropdown:hover .dropbtn::after,
+.dropdown.active .dropbtn::after {
+  transform: translateY(1px) rotate(-135deg) !important;
+  opacity: 1 !important;
+}
+
+
+
+/* Dropdown Menu Content - Refactored for Smooth Transition */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: -1.5rem; /* Spostato a sinistra per simmetria con il padding interno */
+  transform: translateY(-15px);
+
+
+  background: rgba(255, 255, 255, 1); /* Fallback bianco solido */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  min-width: 240px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  padding: 1.2rem 0;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  z-index: 1001;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  /* Animazione Elegante */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+}
+
+/* Theme-Specific Dropdown Colors */
+.theme-default .dropdown-content { background-color: #C69881 !important; border: none; }
+.theme-outdoor .dropdown-content { background-color: #89846E !important; border: none; }
+.theme-lighting .dropdown-content { background-color: #A7D1CD !important; border: none; }
+
+/* White text for themed dropdown links */
+.theme-default .dropdown-content a,
+.theme-outdoor .dropdown-content a,
+.theme-lighting .dropdown-content a {
+  color: #ffffff !important;
+}
+
+.theme-default .dropdown-content a:hover,
+.theme-outdoor .dropdown-content a:hover,
+.theme-lighting .dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* Area invisibile per mantenere hover */
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* Rimosso centramento -50% */
+  pointer-events: auto;
+}
+
+
+.dropdown-content a {
+  padding: 0.8rem 1.5rem !important; /* Allinea la 'P' e dà lo stesso spazio a destra e sinistra */
+  display: block;
+}
+
+
+.dropdown-content a:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.dropdown-content a::after {
+  display: none !important;
+}
+
+/* Rimosse vecchie animazioni non più necessarie */
+
+/* --- Mobile Specifics for Dropdown --- */
+@media (max-width: 900px) {
+  .navbar {
+    gap: 1.2rem !important;
+    padding: 1rem 3% !important;
+    justify-content: center !important;
+  }
+  
+  .navbar a, .dropbtn {
+    font-size: 8pt !important;
+    letter-spacing: 0.05rem !important;
+  }
+
+  .navbar a img {
+    height: 25px !important;
+  }
+
+  .dropdown-content {
+    position: fixed;
+    top: 70px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    transform: none;
+    margin-top: 0;
+  }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Navbar styles moved to end for priority */
+
+/* Cinematic Project Hero Header */
+.project-hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  margin-top: 100px; /* Spazio per navbar */
+  display: flex !important;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff !important;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax Effect */
+  background-color: #f0f0f0; /* Fallback durante il caricamento di GIF pesanti */
+}
+
+.project-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+.project-hero > * {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.project-hero h1 {
+  color: #ffffff !important;
+  font-size: 5rem;
+  letter-spacing: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-hero p {
+  color: #ffffff !important;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  opacity: 1 !important; /* Forza opacità piena per bianco puro */
+}
+
+main {
+  min-height: calc(100vh - 140px);
+}
+
+.page-content {
+  padding: 7rem var(--site-horizontal-padding) 4rem;
+}
+
+.categories {
+  display: flex;
+  width: 100%;
+  padding: 0 5% 5rem 5%; /* Allineato all'header (5%) */
+  gap: 2.5rem; /* Aria tra le immagini */
+  margin-top: 2rem;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .categories {
+    flex-direction: column;
+    padding: 2rem 5% 6rem 5%;
+    gap: 3rem;
+  }
+}
+
+
+
+
+.category-card {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1 / 1; /* Forza il quadrato */
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff !important;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 0; /* Rimosso per full-bleed continuo */
+}
+
+
+
+
+
+@media (max-width: 900px) {
+  .category-card {
+    height: 60vh;
+    width: 100%;
+    flex: none;
+  }
+}
+
+.progetto-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.3; /* Rapporto verticale tipico per portfolio eleganti */
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff !important;
+  text-align: center;
+  transition: transform 0.4s ease;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .progetto-card {
+    aspect-ratio: 1 / 1; /* Quadrato su mobile */
+  }
+}
+
+
+.category-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  display: block;
+  z-index: 0;
+}
+
+
+.progetto-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.6s ease;
+  display: block;
+  z-index: 0;
+}
+
+
+
+.category-card::after,
+.progetto-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.category-card .card-content,
+.progetto-card .card-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  z-index: 2;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+
+
+.category-card h3,
+.progetto-card h3 {
+  color: #ffffff !important;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s ease;
+  text-decoration: none !important;
+}
+
+.category-card p,
+.progetto-card p {
+  color: #ffffff !important;
+  font-size: 14pt;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  font-weight: 400;
+  margin-top: 0.2rem; /* Ridotto per far spazio al tag */
+  text-decoration: none !important;
+}
+
+/* Project Category Tags (Inside Cards) */
+.project-category-tag {
+  display: inline-block;
+  font-size: 8pt;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  color: #ffffff !important;
+  opacity: 1; /* Sempre visibile per intuitività */
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Nascondi i tag se un filtro specifico è attivo */
+.progetti-grid.filters-active .project-category-tag {
+  display: none !important;
+}
+
+/* Background colors for the 'Striscia' tags */
+.tag-interior { background-color: #C69881 !important; }
+.tag-outdoor { background-color: #89846E !important; }
+.tag-lighting { background-color: #A7D1CD !important; }
+
+
+
+
+.category-card:hover img,
+.progetto-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+
+.category-card:hover p,
+.progetto-card:hover p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* Contact Banner */
+.contact-banner {
+  padding: 1.5rem 5% 4rem 5%;
+  text-align: center;
+}
+
+.contact-info {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 14pt;
+}
+
+/* Hero Slideshow for Categories (Refactored for Overlays) */
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  margin-top: 100px; /* Spazio per navbar */
+  height: 75vh;
+  overflow: hidden;
+  background-color: #000; /* Per l'effetto nero tra le immagini */
+}
+
+
+
+.hero-slideshow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5));
+  z-index: 5;
+}
+
+.hero-slideshow img, .hero-slideshow video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0s ease-in-out, transform 4s ease-out; /* Rimossa dissolvenza per "taglio netto" su richiesta */
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.hero-slideshow img.active, .hero-slideshow video.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.hero-slideshow .hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  color: #ffffff !important;
+  z-index: 10;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.hero-slideshow .hero-content h1,
+.hero-slideshow .hero-content h2 {
+  color: #ffffff !important;
+  font-size: 3.5rem;
+  letter-spacing: 0.4rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero-slideshow .hero-content p {
+  color: #ffffff !important;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 1 !important;
+  text-transform: none;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .hero-slideshow { height: 60vh; }
+  .hero-slideshow .hero-content h1,
+  .hero-slideshow .hero-content h2 { font-size: 2rem; letter-spacing: 0.2rem; }
+  .hero-slideshow .hero-content p { font-size: 1rem; }
+}
+
+/* Progetti Grid & Filtering */
+.filter-nav {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: #333333;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+.filter-btn:hover {
+  opacity: 1;
+}
+
+.filter-btn.active {
+  opacity: 1;
+}
+
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.filter-btn.active::after {
+  width: 100%;
+}
+
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Forzato a 3 colonne per riga */
+  gap: 3rem;
+  transition: opacity 0.3s ease; /* Transizione più rapida */
+}
+
+
+@media (max-width: 1200px) {
+  .progetti-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonne su schermi medi */
+  }
+}
+
+@media (max-width: 768px) {
+  .progetti-grid {
+    grid-template-columns: 1fr; /* 1 colonna su mobile */
+    gap: 2rem;
+  }
+}
+
+
+/* Filtering Animations */
+.progetto-card.filtered-out {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .progetti-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Homepage Quote Section - High impact at top */
+.home-quote {
+  max-width: 900px;
+  margin: 120px auto 4rem; /* Sotto navbar con ampio margine inferiore */
+  padding: 0 var(--site-horizontal-padding);
+  text-align: center;
+}
+
+
+.quote-text {
+  font-size: 14pt !important;
+  font-style: italic;
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  color: inherit;
+  opacity: 0.9;
+}
+
+.quote-author {
+  text-align: right;
+  font-size: 11pt;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+
+/* Collaborator Links - Only these will be underlined */
+.collaborator-link {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.collaborator-link:hover {
+  opacity: 0.7;
+}
+
+/* Cleanup: Removed duplicate progetto-card img and legacy theme cards */
+
+/* Form Styles */
+::placeholder {
+  color: currentColor;
+  opacity: 1;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-modal.active {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #ffffff; /* Colore base neutro */
+  font-size: 50px;
+  font-weight: 300;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* Colori Lightbox Tematizzati */
+.theme-default .lightbox-close,
+.theme-default .lightbox-prev,
+.theme-default .lightbox-next {
+  color: #C69881 !important;
+}
+
+.theme-outdoor .lightbox-close,
+.theme-outdoor .lightbox-prev,
+.theme-outdoor .lightbox-next {
+  color: #89846E !important;
+}
+
+.theme-lighting .lightbox-close,
+.theme-lighting .lightbox-prev,
+.theme-lighting .lightbox-next {
+  color: #A7D1CD !important;
+}
+
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: #A7D1CD;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 60px;
+  font-weight: 300;
+  padding: 16px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10001;
+}
+
+
+.lightbox-prev {
+  left: 3%;
+}
+
+.lightbox-next {
+  right: 3%;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  color: #A7D1CD;
+}
+
+.lightbox-trigger {
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.lightbox-trigger:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Impedisci il trascinamento e la selezione delle immagini */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Fix per schermi giganti / 4K: Blocca la larghezza massima a 1400px e centra il contenuto */
+.page-header,
+.page-content,
+.project-description,
+.gallery,
+.progetti-grid {
+  max-width: 1400px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100%;
+}
+
+
+/* Eccezione: Rendi gli sfondi bianchi e gli hero a tutta larghezza */
+.project-description,
+.gallery,
+.progetti-grid,
+.page-content,
+.about-section,
+.form-section {
+
+  /* Sezione specifica per contatti */
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  /* Espande lo sfondo all'infinito senza rompere il layout centrato */
+  box-shadow: 0 0 0 100vmax #ffffff;
+  clip-path: inset(0 -100vmax);
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Padding uniforme per le sezioni bianche */
+.progetti-grid,
+.page-content,
+.project-description,
+.gallery {
+  padding: 4rem 5%;
+}
+
+
+/* Forza il contenuto dentro i banner bianchi a rimanere centrato a 1400px */
+.project-description>p,
+.project-description>ul,
+.project-description>h2,
+.categories>*,
+.progetti-grid>*,
+.page-content>* {
+  max-width: 1400px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Hybrid Editorial Gallery (100px Granular Grid) */
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 100px; /* Unità di base sottile per massimo controllo verticale */
+  grid-auto-flow: dense;
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: #ffffff !important;
+  padding: 4rem 5%;
+}
+
+.gallery > * {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-column: span 6; /* Default: 2 immagini per riga */
+  grid-row: span 4;    /* Default: 400px di altezza */
+}
+
+/* Moduli di Proporzione (Equilibrati e Granulari) */
+.grid-full   { grid-column: span 12 !important; grid-row: span 8 !important; } /* Banner (800px) */
+.grid-h-1    { grid-row: span 1 !important; } /* Striscia Sottile (100px) */
+.grid-h-2    { grid-row: span 2 !important; } /* Striscia Media (200px) */
+.grid-1-2    { grid-column: span 6 !important; }  /* Coppia (50%) */
+.grid-1-3    { grid-column: span 4 !important; }  /* Terzetto (33%) */
+
+/* Blocchi di Testo integrati nella Gallery */
+.gallery-text-block {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+  background-color: #f7f7f7;
+  color: #333 !important;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-size: 14pt;
+  font-weight: 700;
+  line-height: 1.4;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Tematizzazione dei blocchi di testo basata sul tema della pagina */
+.theme-default .gallery-text-block { background-color: #C69881; color: #ffffff !important; }
+.theme-outdoor .gallery-text-block { background-color: #89846E; color: #ffffff !important; }
+.theme-lighting .gallery-text-block { background-color: #A7D1CD; color: #ffffff !important; }
+
+
+/* Animazione Sfumata (Fade-In) */
+.gallery .reveal {
+  opacity: 0;
+  transform: translateY(0) !important;
+  visibility: hidden;
+  transition: opacity 1s ease-out;
+}
+.gallery .reveal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 1100px) {
+  .gallery {
+    grid-template-columns: repeat(6, 1fr); 
+    grid-auto-rows: 100px;
+    gap: 1.5rem;
+  }
+  .gallery > * { 
+    grid-column: span 3 !important; 
+    grid-row: span 3 !important; /* 300px su tablet */
+  }
+  .grid-full { grid-column: span 6 !important; grid-row: span 6 !important; }
+  .grid-h-1 { grid-row: span 1 !important; }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 100px;
+    gap: 1rem;
+  }
+  .gallery > * { 
+    grid-column: span 1 !important; 
+    grid-row: span 3 !important; /* 300px su mobile */
+  }
+  .grid-full { grid-row: span 4 !important; }
+  .grid-h-1 { grid-row: span 1 !important; }
+}
+
+/* Fix per link e testi specifici dentro le zone bianche */
+.project-description a,
+.page-content a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Fix per sezioni bianche consecutive: aggiunge respiro tra i banner */
+.project-description + .gallery,
+.page-content + .gallery,
+.hero + .categories {
+  padding-top: 2rem !important;
+}
+
+/* Fix per sezioni bianche annidate (evita doppio padding e doppie ombre) */
+.page-content .progetti-grid,
+.page-content .gallery {
+  padding-top: 0 !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+}
+
+
+main {
+  width: 100%;
+  overflow-x: hidden;
+  /* Previene scroll orizzontale dovuto al trucco del banner */
+}
+
+
+/* Limita anche il contenuto del footer senza restringere il colore di sfondo intero */
+.contact-banner>* {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Scroll Reveal Animations - Cinematic Refinement */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+/* Utility for images that need to be fully visible (no crop) */
+.img-contain {
+  object-fit: contain !important;
+  background-color: transparent !important;
+}
+
+/* Maintenance Modal - Dismissible Glassmorphism */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 20000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.maintenance-modal {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 4rem 3rem;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: modalAppear 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modalAppear {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #C69881;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+}
+
+.modal-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+  color: #C69881;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.modal-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: #555;
+  letter-spacing: 0.05rem;
+  line-height: 1.8;
+}
+
+/* Lock scrolling while modal is active */
+body.modal-active {
+  overflow: hidden !important;
+}
+
+/* Style Sync: Final Polish and Grey Border Fix Applied */

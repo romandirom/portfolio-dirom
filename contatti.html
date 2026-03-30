@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti | DI ROM</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Aggressive scrollbar suppression */
+    html { -ms-overflow-style: none !important; scrollbar-width: none !important; scrollbar-color: transparent transparent !important; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; background: transparent !important; }
+
+    /* Scoped styles for the contact page to enforce ALL CAPS and specific minimal borders */
+    .contact-page-wrapper {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    
+    .form-section {
+      background-color: transparent;
+      color: #C69881;
+      padding: 6rem 5%;
+    }
+    .form-section input, .form-section select, .form-section textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #C69881;
+      color: #C69881;
+      font-family: 'Lato', sans-serif;
+      font-size: 14pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 1rem 0;
+      outline: none;
+      width: 100%;
+    }
+    .form-section select {
+      cursor: pointer;
+      appearance: none;
+    }
+    .form-section select option {
+      background-color: #ffffff;
+      color: #C69881;
+    }
+    .form-section ::placeholder {
+      color: #C69881;
+      opacity: 1;
+    }
+    .form-row {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .form-col {
+      flex: 1;
+    }
+    .single-row {
+      margin-bottom: 2.5rem;
+    }
+    /* Custom Dropdown Styling */
+    .custom-select {
+      position: relative;
+      width: 100%;
+      cursor: pointer;
+    }
+    .select-trigger {
+      padding: 1rem 0;
+      border-bottom: 2px solid #C69881;
+      color: #C69881;
+      font-size: 14pt;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .select-trigger::after {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-right: 2.5px solid currentColor;
+      border-bottom: 2.5px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .custom-select.active .select-trigger::after {
+      transform: translateY(1px) rotate(-135deg);
+      opacity: 1;
+    }
+    .select-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #C69881;
+      list-style: none;
+      padding: 1rem 0;
+      margin: 1rem 0 0 0;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-radius: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .custom-select.active .select-options {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .select-options li {
+      padding: 1.2rem 2.5rem;
+      color: #ffffff;
+      font-size: 11pt;
+      letter-spacing: 0.1rem;
+      transition: background 0.3s ease;
+    }
+    .select-options li:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .select-trigger:hover {
+      opacity: 0.8;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.5rem;
+      background-color: #C69881;
+      color: #ffffff;
+      border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 14pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 1rem;
+    }
+    .submit-btn:hover {
+      transform: scale(1.02);
+    }
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="theme-default">
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="nav-logo-link"><img src="assets/logo-C69881.svg" alt="DI ROM Logo"></a>
+        <a href="about.html">ABOUT</a>
+        <div class="dropdown">
+          <button class="dropbtn" onclick="window.location.href='progetti.html'">PROGETTI</button>
+          <div class="dropdown-content">
+            <a href="interior-design.html">INTERIOR DESIGN</a>
+            <a href="outdoor.html">OUTDOOR</a>
+            <a href="lighting.html">LIGHTING DESIGN</a>
+          </div>
+        </div>
+        <a href="contatti.html">CONTATTI</a>
+      </div>
+    </nav>
+
+
+  <main class="contact-page-wrapper" style="display: flex; flex-direction: column; min-height: calc(100vh - 100px);">
+    
+    <!-- Top Part -->
+    <section class="reveal" style="padding: 6rem 5%; flex: 1; display: flex; flex-direction: column; justify-content: center; background-color: #ffffff; color: #C69881;">
+      <div style="width: 100%; max-width: 900px; margin: 0 auto;">
+        
+        <!-- Informazioni -->
+        <div class="reveal reveal-delay-2" style="text-align: left;">
+          <h2 style="font-size: 24pt; margin-bottom: 1.5rem; color: #C69881;">INFORMAZIONI</h2>
+          <p style="font-size: 14pt; text-transform: none;">Email: info@dirom.it</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Form Part -->
+    <section class="form-section reveal">
+      <div style="max-width: 900px; margin: 0 auto; text-align: left;">
+        
+        <h2 style="font-size: 24pt; margin-bottom: 3rem; color: #C69881;">SCRIVICI UNA MAIL</h2>
+        
+        <form action="mailto:info@dirom.it" method="GET" enctype="text/plain">
+          
+          <div class="form-row">
+            <div class="form-col">
+              <div class="custom-select" id="customSelect">
+                <div class="select-trigger">SELEZIONA TIPOLOGIA DI RICHIESTA</div>
+                <ul class="select-options">
+                  <li data-value="Interior Design">INTERIOR DESIGN</li>
+                  <li data-value="Outdoor">OUTDOOR</li>
+                  <li data-value="Lighting Design">LIGHTING DESIGN</li>
+                  <li data-value="Altro">ALTRO</li>
+                </ul>
+                <input type="hidden" name="Tipologia_Richiesta" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <input type="text" name="Nome_Cognome" placeholder="NOME E COGNOME*" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-col">
+              <input type="email" name="Email" placeholder="EMAIL*" required>
+            </div>
+            <div class="form-col">
+              <input type="text" name="Telefono" placeholder="TELEFONO">
+            </div>
+          </div>
+          
+          <div class="single-row">
+            <input type="text" name="Oggetto" placeholder="OGGETTO DEL MESSAGGIO*" required>
+          </div>
+          
+          <div class="single-row">
+            <textarea name="Messaggio" placeholder="MESSAGGIO*" rows="4" required style="resize: vertical;"></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">INVIA</button>
+          
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Layout Sync: Contacts Page Verified -->

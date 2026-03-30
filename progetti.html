@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progetti | DI ROM</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html { -ms-overflow-style: none !important; scrollbar-width: none !important; scrollbar-color: transparent transparent !important; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; background: transparent !important; }
+  </style>
+</head>
+<body class="theme-default">
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="nav-logo-link"><img src="assets/logo-C69881.svg" alt="DI ROM Logo"></a>
+        <a href="about.html">ABOUT</a>
+        <div class="dropdown">
+          <button class="dropbtn" onclick="window.location.href='progetti.html'">PROGETTI</button>
+          <div class="dropdown-content">
+            <a href="interior-design.html">INTERIOR DESIGN</a>
+            <a href="outdoor.html">OUTDOOR</a>
+            <a href="lighting.html">LIGHTING DESIGN</a>
+          </div>
+        </div>
+        <a href="contatti.html">CONTATTI</a>
+      </div>
+    </nav>
+
+
+  <main>
+    <section class="page-content" style="padding-top: 20vh; padding-bottom: 20vh;">
+      <!-- Navigazione Filtri -->
+      <div class="filter-nav reveal">
+        <button class="filter-btn active" data-filter="all">Tutti</button>
+        <button class="filter-btn" data-filter="interior">Interior Design</button>
+        <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+        <button class="filter-btn" data-filter="lighting">Lighting Design</button>
+      </div>
+
+      <div class="progetti-grid">
+        <!-- Card 1: Interior -->
+        <a href="progetto-trentametriquadri.html" class="progetto-card reveal reveal-delay-1" data-category="interior">
+          <img src="assets/trentametriquadri_8.png" alt="Trentametriquadri">
+          <div class="card-content">
+            <span class="project-category-tag tag-interior">Interior Design</span>
+            <h3 style="line-height: 1.1;">TRENTAMETRI<br>QUADRI</h3>
+            <p>Micro-living: L'arte dell'essenziale</p>
+          </div>
+        </a>
+
+        <!-- Card 2: Interior -->
+        <a href="progetto-interior.html" class="progetto-card reveal reveal-delay-2" data-category="interior">
+          <img src="assets/cucina_nel_matese.jpg" alt="Cucina nel Matese">
+          <div class="card-content">
+            <span class="project-category-tag tag-interior">Interior Design</span>
+            <h3>CUCINA NEL MATESE</h3>
+            <p>Simbiosi tra interno ed esterno</p>
+          </div>
+        </a>
+
+        <!-- Card 3: Outdoor -->
+        <a href="progetto-outdoor.html" class="progetto-card reveal reveal-delay-3" data-category="outdoor">
+          <img src="assets/matese_outdoor.jpg" alt="Matese Outdoor">
+          <div class="card-content">
+            <span class="project-category-tag tag-outdoor">Outdoor</span>
+            <h3>MATESE OUTDOOR</h3>
+            <p>Architettura e Natura in Equilibrio</p>
+          </div>
+        </a>
+
+        <!-- Card 4: Outdoor (Hermosita) -->
+        <a href="progetto-hermosita.html" class="progetto-card reveal reveal-delay-4" data-category="outdoor">
+          <img src="assets/hermosita_cover.jpg" alt="Hermosita">
+          <div class="card-content">
+            <span class="project-category-tag tag-outdoor">Outdoor</span>
+            <h3>HERMOSITA</h3>
+            <p>Un dialogo armonico tra design moderno e natura tropicale</p>
+          </div>
+        </a>
+
+        <!-- Card 5: Lighting -->
+        <a href="progetto-lighting.html" class="progetto-card reveal reveal-delay-5" data-category="lighting">
+          <img src="assets/vasa_94.jpg" alt="VASA-94" style="object-position: 30% center;">
+          <div class="card-content">
+            <span class="project-category-tag tag-lighting">Lighting Design</span>
+            <h3>VASA-94</h3>
+            <p>Villa Ada Space Ark 94</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact-banner">
+    <h2>CONTATTACI</h2>
+    <div class="contact-info">
+      <p>info@dirom.it</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Layout Sync: Projects Page Verified -->

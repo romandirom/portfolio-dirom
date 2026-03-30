@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DI ROM | Architettura & Design</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Aggressive scrollbar suppression */
+    html { -ms-overflow-style: none !important; scrollbar-width: none !important; scrollbar-color: transparent transparent !important; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; background: transparent !important; }
+  </style>
+</head>
+<body class="theme-default modal-active">
+
+    <!-- Maintenance Modal -->
+    <div id="maintenance-overlay" class="modal-overlay">
+      <div class="maintenance-modal">
+        <span id="close-maintenance" class="modal-close">&times;</span>
+        <h2 class="modal-title">CANTIERE DIGITALE APERTO</h2>
+        <p class="modal-text">Stiamo ultimando i dettagli per l'inaugurazione del nuovo spazio web. Grazie per la pazienza, torneremo online a giorni.</p>
+      </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="nav-logo-link"><img src="assets/logo-C69881.svg" alt="DI ROM Logo"></a>
+        <a href="about.html">ABOUT</a>
+        <div class="dropdown">
+          <button class="dropbtn" onclick="window.location.href='progetti.html'">PROGETTI</button>
+          <div class="dropdown-content">
+            <a href="interior-design.html">INTERIOR DESIGN</a>
+            <a href="outdoor.html">OUTDOOR</a>
+            <a href="lighting.html">LIGHTING DESIGN</a>
+          </div>
+        </div>
+        <a href="contatti.html">CONTATTI</a>
+      </div>
+    </nav>
+
+  <main>
+    <!-- Sezione Citazione - Spostata in alto sotto l'header -->
+    <section class="home-quote reveal">
+      <p class="quote-text">"Trasformare la materia in un'esperienza emotiva, onorando la memoria di ogni superficie.<br>Un design sincero, dove ogni scelta materica è il riflesso profondo di chi la vive."</p>
+      <p class="quote-author">— Roman Marcucci</p>
+    </section>
+
+    <section class="categories">
+      <a href="interior-design.html" class="category-card reveal">
+        <img src="assets/real_interior.jpg" alt="Interior Design">
+        <div class="card-content">
+          <h3>Interior Design</h3>
+          <p>Progettare l'intimità: dove lo spazio diventa emozione quotidiana</p>
+        </div>
+      </a>
+      
+      <a href="outdoor.html" class="category-card reveal">
+        <img src="assets/real_outdoor.jpg" alt="Outdoor">
+        <div class="card-content">
+          <h3>Outdoor</h3>
+          <p>Oltre le mura: il dialogo continuo tra architettura e natura</p>
+        </div>
+      </a>
+      
+      <a href="lighting.html" class="category-card reveal">
+        <img src="assets/real_lighting.jpg" alt="Lighting" style="object-position: 30% center;">
+        <div class="card-content">
+          <h3>Lighting Design</h3>
+          <p>Scrivere con la luce: dare forma all'ombra e vita ai volumi</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer class="contact-banner">
+    <h2>CONTATTACI</h2>
+    <div class="contact-info">
+      <p>info@dirom.it</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Live Sync Verified: Ready for Netlify Deployment -->

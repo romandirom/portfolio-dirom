@@ -1,0 +1,21 @@
+# File ignorati dal sistema Git per il portfolio
+
+# Cartelle e file temporanei di sistema o sviluppo
+.gemini/
+.tmp.driveupload/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Backup locali e zips pesanti da oltre 1GB
+*.zip
+*.rar
+*.tar.gz
+
+# Log e Script Locali non necessari
+tunnel*.txt
+serve.ps1
+START_SERVER.bat
+AVVIA_SITO.bat
+
+# Nota: Il file PDF del progetto (12MB) e i nuovi MP4 (15MB) vengono inclusi regolarmente.
