@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -11,9 +11,10 @@
     html::-webkit-scrollbar, body::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; background: transparent !important; }
   </style>
 </head>
-<body class="theme-default modal-active">
+<body class="theme-default">
 
-    <!-- Maintenance Modal -->
+    <!-- Banner per lavori (Attualmente disattivato) -->
+    <!--
     <div id="maintenance-overlay" class="modal-overlay">
       <div class="maintenance-modal">
         <span id="close-maintenance" class="modal-close">&times;</span>
@@ -21,14 +22,16 @@
         <p class="modal-text">Stiamo ultimando i dettagli per l'inaugurazione del nuovo spazio web. Grazie per la pazienza, torneremo online a giorni.</p>
       </div>
     </div>
+    -->
 
     <nav class="navbar" id="navbar">
       <div class="navbar-inner">
         <a href="index.html" class="nav-logo-link"><img src="assets/logo-C69881.svg" alt="DI ROM Logo"></a>
         <a href="about.html">ABOUT</a>
         <div class="dropdown">
-          <button class="dropbtn" onclick="window.location.href='progetti.html'">PROGETTI</button>
+          <button class="dropbtn" id="progetti-menu-btn">PROGETTI</button>
           <div class="dropdown-content">
+            <a href="progetti.html" class="all-projects-link">TUTTI I PROGETTI</a>
             <a href="interior-design.html">INTERIOR DESIGN</a>
             <a href="outdoor.html">OUTDOOR</a>
             <a href="lighting.html">LIGHTING DESIGN</a>
@@ -83,3 +86,4 @@
 </body>
 </html>
 <!-- Live Sync Verified: Ready for Netlify Deployment -->
+

@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile Dropdown Toggle (Tap/Click Support)
   const dropdown = document.querySelector('.dropdown');
-  const dropbtn = document.querySelector('.dropbtn');
+  const dropbtn = document.getElementById('progetti-menu-btn') || document.querySelector('.dropbtn');
+  
   if (dropbtn && dropdown) {
     dropbtn.addEventListener('click', (e) => {
-      if (window.innerWidth <= 900) {
-        e.preventDefault(); // Prevent jump to progetti.html on first tap
-        dropdown.classList.toggle('active');
-      }
+      // Il tasto principale ora NON naviga mai, apre solo la tendina (coerente tra pc e mobile)
+      e.preventDefault(); 
+      dropdown.classList.toggle('active');
+      e.stopPropagation(); // Evita la chiusura immediata catturata da "document.click"
     });
   }
 
