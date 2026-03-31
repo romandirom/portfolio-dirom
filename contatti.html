@@ -10,143 +10,30 @@
     html { -ms-overflow-style: none !important; scrollbar-width: none !important; scrollbar-color: transparent transparent !important; }
     html::-webkit-scrollbar, body::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; background: transparent !important; }
 
-    /* Scoped styles for the contact page to enforce ALL CAPS and specific minimal borders */
+    /* Scoped styles for the contact page to enforce ALL CAPS */
     .contact-page-wrapper {
       text-transform: uppercase;
       font-weight: 700;
     }
     
-    .form-section {
-      background-color: transparent;
-      color: #C69881;
-      padding: 6rem 5%;
-    }
-    .form-section input, .form-section select, .form-section textarea {
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid #C69881;
-      color: #C69881;
-      font-family: 'Lato', sans-serif;
-      font-size: 14pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 1rem 0;
-      outline: none;
-      width: 100%;
-    }
-    .form-section select {
-      cursor: pointer;
-      appearance: none;
-    }
-    .form-section select option {
+    .centered-contact-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 5%;
       background-color: #ffffff;
       color: #C69881;
     }
-    .form-section ::placeholder {
-      color: #C69881;
-      opacity: 1;
-    }
-    .form-row {
-      display: flex;
-      gap: 3rem;
-      margin-bottom: 2.5rem;
-    }
-    .form-col {
-      flex: 1;
-    }
-    .single-row {
-      margin-bottom: 2.5rem;
-    }
-    /* Custom Dropdown Styling */
-    .custom-select {
-      position: relative;
-      width: 100%;
-      cursor: pointer;
-    }
-    .select-trigger {
-      padding: 1rem 0;
-      border-bottom: 2px solid #C69881;
-      color: #C69881;
-      font-size: 14pt;
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-    .select-trigger::after {
-      content: '';
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-right: 2.5px solid currentColor;
-      border-bottom: 2.5px solid currentColor;
-      transform: translateY(-2px) rotate(45deg);
-      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-      opacity: 0.8;
-      pointer-events: none;
-    }
-    .custom-select.active .select-trigger::after {
-      transform: translateY(1px) rotate(-135deg);
-      opacity: 1;
-    }
-    .select-options {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: #C69881;
-      list-style: none;
-      padding: 1rem 0;
-      margin: 1rem 0 0 0;
-      z-index: 100;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      border-radius: 4px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .custom-select.active .select-options {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .select-options li {
-      padding: 1.2rem 2.5rem;
-      color: #ffffff;
-      font-size: 11pt;
-      letter-spacing: 0.1rem;
-      transition: background 0.3s ease;
-    }
-    .select-options li:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    .select-trigger:hover {
-      opacity: 0.8;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 1.5rem;
-      background-color: #C69881;
-      color: #ffffff;
-      border: none;
-      font-family: 'Lato', sans-serif;
-      font-size: 14pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      margin-top: 1rem;
-    }
-    .submit-btn:hover {
-      transform: scale(1.02);
-    }
+    
+    /* Su mobile (<= 768px), spostiamo il contenuto leggermente pi in alto per evitare l'effetto "troppo bianco" */
     @media (max-width: 768px) {
-      .form-row {
-        flex-direction: column;
-        gap: 2.5rem;
+      .centered-contact-section {
+        justify-content: flex-start;
+        padding-top: 8rem; /* Distanza misurata dal top includendo la barra menu */
+        padding-bottom: 2rem;
       }
     }
   </style>
@@ -173,120 +60,103 @@
 
   <main class="contact-page-wrapper" style="display: flex; flex-direction: column; min-height: calc(100vh - 100px);">
     
-    <!-- Top Part -->
-    <section class="reveal" style="padding: 6rem 5%; flex: 1; display: flex; flex-direction: column; justify-content: center; background-color: #ffffff; color: #C69881;">
-      <div style="width: 100%; max-width: 900px; margin: 0 auto;">
+    <!-- Contatto Progettista -->
+    <section class="reveal centered-contact-section">
+      <div style="width: 100%; max-width: 800px; margin: 0 auto;">
         
-        <!-- Informazioni -->
-        <div class="reveal reveal-delay-2" style="text-align: left;">
-          <h2 style="font-size: 24pt; margin-bottom: 1.5rem; color: #C69881;">INFORMAZIONI</h2>
-          <p style="font-size: 14pt; text-transform: none;">Email: info@dirom.it</p>
+        <h2 style="font-size: 24pt; margin-bottom: 2rem; color: #C69881;">SCRIVICI UNA MAIL</h2>
+        
+        <p style="font-size: 14pt; font-family: 'Lato', sans-serif; text-transform: none; line-height: 1.8; margin-bottom: 3.5rem;">
+          Siamo sempre alla ricerca di nuove sfide architettoniche e di design.<br>
+          Se desideri discutere di un progetto, richiedere una consulenza o collaborare con lo studio, non esitare a contattarci.
+        </p>
+
+        <!-- Pulsante Intelligente (Gmail su PC / App nativa su Telefono) -->
+        <button onclick="apriPosta()" style="
+          display: inline-block;
+          border: none;
+          cursor: pointer;
+          padding: 1.2rem 3rem;
+          background-color: #C69881;
+          color: #ffffff;
+          font-family: 'Lato', sans-serif;
+          font-size: 13pt;
+          font-weight: 700;
+          letter-spacing: 0.1rem;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: transform 0.3s ease, background-color 0.3s ease;
+        " onmouseover="this.style.transform='scale(1.02)'; this.style.backgroundColor='#b38670';" onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#C69881';">
+          INVIA DOMANDA VIA MAIL
+        </button>
+
+        <div style="margin-top: 3rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 0.8rem;">
+           <p style="font-size: 10pt; font-family: 'Lato', sans-serif; text-transform: uppercase; letter-spacing: 0.1rem; margin: 0;">Oppure copia l'indirizzo: <strong>INFO@DIROM.IT</strong></p>
+           <button onclick="copiaEmail()" id="copy-btn" style="background: rgba(198, 152, 129, 0.1); border: 1px solid rgba(198, 152, 129, 0.3); border-radius: 4px; cursor: pointer; color: #C69881; display: flex; align-items: center; justify-content: center; padding: 0.4rem; transition: all 0.2s;" title="Copia indirizzo" onmouseover="this.style.background='rgba(198, 152, 129, 0.2)';" onmouseout="this.style.background='rgba(198, 152, 129, 0.1)';">
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+             </svg>
+           </button>
         </div>
 
-      </div>
-    </section>
+        <!-- Link Instagram -->
+        <div style="margin-top: 5rem; text-align: center;">
+          <a href="https://www.instagram.com/di_rom_design/" target="_blank" rel="noopener noreferrer" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #C69881;
+            font-family: 'Lato', sans-serif;
+            font-size: 11pt;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+          " onmouseover="this.style.opacity='0.6';" onmouseout="this.style.opacity='1';">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            SEGUICI SU INSTAGRAM
+          </a>
+        </div>
 
-    <!-- Form Part -->
-    <section class="form-section reveal">
-      <div style="max-width: 900px; margin: 0 auto; text-align: left;">
-        
-        <h2 style="font-size: 24pt; margin-bottom: 3rem; color: #C69881;">SCRIVICI UNA MAIL</h2>
-        
-        <form id="contactForm" action="https://formspree.io/f/mpqorrvz" method="POST">
-          
-          <div class="form-row">
-            <div class="form-col">
-              <div class="custom-select" id="customSelect">
-                <div class="select-trigger">SELEZIONA TIPOLOGIA DI RICHIESTA</div>
-                <ul class="select-options">
-                  <li data-value="Interior Design">INTERIOR DESIGN</li>
-                  <li data-value="Outdoor">OUTDOOR</li>
-                  <li data-value="Lighting Design">LIGHTING DESIGN</li>
-                  <li data-value="Altro">ALTRO</li>
-                </ul>
-                <input type="hidden" name="Tipologia_Richiesta" required>
-              </div>
-            </div>
-            <div class="form-col">
-              <input type="text" name="Nome_Cognome" placeholder="NOME E COGNOME*" autocomplete="name" required>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-col">
-              <input type="email" name="Email" placeholder="EMAIL*" autocomplete="email" required>
-            </div>
-            <div class="form-col">
-              <input type="text" name="Telefono" placeholder="TELEFONO" autocomplete="tel">
-            </div>
-          </div>
-          
-          <div class="single-row">
-            <input type="text" name="Oggetto" placeholder="OGGETTO DEL MESSAGGIO*" required>
-          </div>
-          
-          <div class="single-row">
-            <textarea name="Messaggio" placeholder="MESSAGGIO*" rows="4" required style="resize: vertical;"></textarea>
-          </div>
-          
-          <button type="submit" class="submit-btn" id="submitBtn">INVIA</button>
-          <div id="responseMessage" style="display:none; font-weight: 700; margin-top: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 0.1rem;"></div>
-          
-        </form>
       </div>
     </section>
   </main>
 
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const form = this;
-      const btn = document.getElementById('submitBtn');
-      const responseMsg = document.getElementById('responseMessage');
-      
-      const formData = new FormData(form);
-      
-      // Feedback visivo iniziale
-      btn.innerHTML = 'INVIO IN CORSO...';
-      btn.disabled = true;
-      responseMsg.style.display = 'none';
+    function apriPosta() {
+      // Riconosce se il dispositivo è un telefono/tablet
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = 'mailto:info@dirom.it'; // Apre l'app della posta del telefono
+      } else {
+        // Su computer fisso forza l'apertura di Gmail in una nuova scheda web per aggirare il blocco di Windows
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@dirom.it', '_blank');
+      }
+    }
 
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          responseMsg.innerHTML = 'MESSAGGIO INVIATO CON SUCCESSO';
-          responseMsg.style.color = '#28a745'; // Verde successo
-          responseMsg.style.display = 'block';
-          form.reset();
-          // Reset custom select
-          const trigger = document.querySelector('.select-trigger');
-          if (trigger) trigger.textContent = 'SELEZIONA TIPOLOGIA DI RICHIESTA';
-        } else {
-          responseMsg.innerHTML = 'ERRORE NELL\'INVIO. RIPROVA PIÙ TARDI.';
-          responseMsg.style.color = '#dc3545'; // Rosso errore
-          responseMsg.style.display = 'block';
-        }
-      })
-      .catch(error => {
-        responseMsg.innerHTML = 'ERRORE DI CONNESSIONE.';
-        responseMsg.style.color = '#dc3545';
-        responseMsg.style.display = 'block';
-      })
-      .finally(() => {
-        btn.innerHTML = 'INVIA';
-        btn.disabled = false;
+    function copiaEmail() {
+      navigator.clipboard.writeText('info@dirom.it').then(() => {
+        const btn = document.getElementById('copy-btn');
+        const originalHTML = btn.innerHTML;
+        // Feedback visivo (verde e spunta)
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        btn.style.borderColor = 'rgba(40, 167, 69, 0.3)';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.borderColor = 'rgba(198, 152, 129, 0.3)';
+        }, 2000);
       });
-    });
+    }
   </script>
   <script src="script.js"></script>
 </body>
 </html>
 <!-- Layout Sync: Contacts Page Verified -->
+
 

@@ -297,6 +297,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Initialize Fancybox if present
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Fancybox !== 'undefined') {
+        Fancybox.bind('[data-fancybox]', {
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY"],
+                    right: ["slideshow", "thumbs", "close"],
+                },
+            },
+            Images: {
+                Panzoom: {
+                    maxScale: 2,
+                },
+            },
+            Thumbs: {
+                autoStart: true,
+            },
+        });
+    }
+});
+
+// Funzione globale per gestione apertura client di posta "intelligente"
+function apriPosta(event) {
+  if(event) event.preventDefault();
+  // Riconosce se il dispositivo  un telefono/tablet
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.location.href = 'mailto:info@dirom.it';
+  } else {
+    // Apri Gmail in web
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@dirom.it', '_blank');
+  }
+}
+
 // Custom Select Dropdown Logic for Contact Form
 document.addEventListener('DOMContentLoaded', () => {
   const customSelect = document.getElementById('customSelect');
