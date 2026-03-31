@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -192,7 +192,7 @@
         
         <h2 style="font-size: 24pt; margin-bottom: 3rem; color: #C69881;">SCRIVICI UNA MAIL</h2>
         
-        <form action="mailto:info@dirom.it" method="GET" enctype="text/plain">
+        <form id="contactForm" action="contatti.php" method="POST">
           
           <div class="form-row">
             <div class="form-col">
@@ -208,16 +208,16 @@
               </div>
             </div>
             <div class="form-col">
-              <input type="text" name="Nome_Cognome" placeholder="NOME E COGNOME*" required>
+              <input type="text" name="Nome_Cognome" placeholder="NOME E COGNOME*" autocomplete="name" required>
             </div>
           </div>
           
           <div class="form-row">
             <div class="form-col">
-              <input type="email" name="Email" placeholder="EMAIL*" required>
+              <input type="email" name="Email" placeholder="EMAIL*" autocomplete="email" required>
             </div>
             <div class="form-col">
-              <input type="text" name="Telefono" placeholder="TELEFONO">
+              <input type="text" name="Telefono" placeholder="TELEFONO" autocomplete="tel">
             </div>
           </div>
           
@@ -229,13 +229,59 @@
             <textarea name="Messaggio" placeholder="MESSAGGIO*" rows="4" required style="resize: vertical;"></textarea>
           </div>
           
-          <button type="submit" class="submit-btn">INVIA</button>
+          <button type="submit" class="submit-btn" id="submitBtn">INVIA</button>
+          <div id="responseMessage" style="display:none; font-weight: 700; margin-top: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 0.1rem;"></div>
           
         </form>
       </div>
     </section>
   </main>
 
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = this;
+      const btn = document.getElementById('submitBtn');
+      const responseMsg = document.getElementById('responseMessage');
+      
+      const formData = new FormData(form);
+      
+      // Feedback visivo iniziale
+      btn.innerHTML = 'INVIO IN CORSO...';
+      btn.disabled = true;
+      responseMsg.style.display = 'none';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          responseMsg.innerHTML = 'MESSAGGIO INVIATO CON SUCCESSO';
+          responseMsg.style.color = '#28a745'; // Verde successo
+          responseMsg.style.display = 'block';
+          form.reset();
+          // Reset custom select
+          const trigger = document.querySelector('.select-trigger');
+          if (trigger) trigger.textContent = 'SELEZIONA TIPOLOGIA DI RICHIESTA';
+        } else {
+          responseMsg.innerHTML = 'ERRORE NELL\'INVIO. RIPROVA PIÙ TARDI.';
+          responseMsg.style.color = '#dc3545'; // Rosso errore
+          responseMsg.style.display = 'block';
+        }
+      })
+      .catch(error => {
+        responseMsg.innerHTML = 'ERRORE DI CONNESSIONE.';
+        responseMsg.style.color = '#dc3545';
+        responseMsg.style.display = 'block';
+      })
+      .finally(() => {
+        btn.innerHTML = 'INVIA';
+        btn.disabled = false;
+      });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
