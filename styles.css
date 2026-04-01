@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --site-padding: 2rem;
   --site-max-width: 1800px;
   /* Margini fluidi ridotti per evitare l'effetto "colonne vuote" */
@@ -98,7 +98,7 @@ h6 {
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 1rem;
-  letter-spacing: 0.25rem; /* Aumentata per un look più "editoriale" */
+  letter-spacing: 0.25rem; /* Aumentata per un look piÃ¹ "editoriale" */
   line-height: 1.2;
 }
 
@@ -121,7 +121,7 @@ p {
   font-weight: 400;
   font-family: 'Lato', sans-serif;
   text-transform: none;
-  line-height: 1.8; /* Aumentata per leggibilità professionale */
+  line-height: 1.8; /* Aumentata per leggibilitÃ  professionale */
   letter-spacing: 0.02rem;
 }
 
@@ -185,7 +185,7 @@ body.theme-lighting {
   display: block;
   aspect-ratio: 1 / 1;
   background-color: #f7f7f7;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Reso più scattante */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Reso piÃ¹ scattante */
 }
 .navbar {
   position: fixed;
@@ -243,11 +243,11 @@ body.theme-lighting {
 }
 
 .nav-logo-link {
-  margin-right: auto; /* Ripristinato per spingere il menù tutto a destra */
+  margin-right: auto; /* Ripristinato per spingere il menÃ¹ tutto a destra */
 }
 
 .navbar a img {
-  height: 45px; /* Leggermente più grande come da screen */
+  height: 45px; /* Leggermente piÃ¹ grande come da screen */
   display: block;
   transition: transform 0.3s ease;
 }
@@ -291,11 +291,11 @@ body.theme-lighting {
 .dropbtn::after {
   content: '' !important;
   display: inline-block !important;
-  width: 7px !important; /* Leggermente più grande per stabilità */
+  width: 7px !important; /* Leggermente piÃ¹ grande per stabilitÃ  */
   height: 7px !important;
   border-top: none !important; /* Reset assoluto */
   border-left: none !important;
-  border-right: 2.5px solid currentColor !important; /* Più spesso (Grassetto) */
+  border-right: 2.5px solid currentColor !important; /* PiÃ¹ spesso (Grassetto) */
   border-bottom: 2.5px solid currentColor !important;
   transform: translateY(-2px) rotate(45deg) !important;
   transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
@@ -376,7 +376,7 @@ body.theme-lighting {
 
 
 .dropdown-content a {
-  padding: 0.8rem 1.5rem !important; /* Allinea la 'P' e dà lo stesso spazio a destra e sinistra */
+  padding: 0.8rem 1.5rem !important; /* Allinea la 'P' e dÃ  lo stesso spazio a destra e sinistra */
   display: block;
 }
 
@@ -389,7 +389,7 @@ body.theme-lighting {
   display: none !important;
 }
 
-/* Rimosse vecchie animazioni non più necessarie */
+/* Rimosse vecchie animazioni non piÃ¹ necessarie */
 
 /* --- Mobile Specifics for Dropdown --- */
 @media (max-width: 900px) {
@@ -493,7 +493,31 @@ body.theme-lighting {
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  opacity: 1 !important; /* Forza opacità piena per bianco puro */
+  opacity: 1 !important; /* Forza opacitÃ  piena per bianco puro */
+}
+
+/* Fix per overflow del titolo sui cellulari */
+@media (max-width: 900px) {
+  .project-hero {
+    height: 45vh;
+    min-height: 300px;
+    margin-top: 80px; /* Riduciamo proporzionalmente anche lo stacco superiore */
+  }
+  .project-hero h1 {
+    font-size: clamp(1.2rem, 7vw, 2.5rem); /* Scala in base alla larghezza dello schermo del cellulare */
+    letter-spacing: 0.05rem; /* Ridotta la spaziatura per far entrare parole lunghissime */
+    padding: 0 1rem;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  .project-hero p {
+    font-size: 0.95rem;
+    letter-spacing: 0.1rem;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
 }
 
 main {
@@ -656,12 +680,12 @@ main {
   margin-bottom: 0.8rem;
   padding: 0.4rem 0.8rem;
   color: #ffffff !important;
-  opacity: 1; /* Sempre visibile per intuitività */
+  opacity: 1; /* Sempre visibile per intuitivitÃ  */
   transform: translateY(0);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Nascondi i tag se un filtro specifico è attivo */
+/* Nascondi i tag se un filtro specifico Ã¨ attivo */
 .progetti-grid.filters-active .project-category-tag {
   display: none !important;
 }
@@ -777,12 +801,25 @@ main {
   font-weight: 400;
 }
 
-@media (max-width: 900px) {
-  .hero-slideshow { height: 60vh; }
-  .hero-slideshow .hero-content h1,
-  .hero-slideshow .hero-content h2 { font-size: 2rem; letter-spacing: 0.2rem; }
-  .hero-slideshow .hero-content p { font-size: 1rem; }
-}
+  @media (max-width: 900px) {
+    .hero-slideshow { height: 45vh; min-height: 300px; }
+    .hero-slideshow .hero-content {
+      width: 92%;
+    }
+    .hero-slideshow .hero-content h1,
+    .hero-slideshow .hero-content h2 { 
+      font-size: clamp(1.2rem, 7vw, 2.5rem); 
+      letter-spacing: 0.05rem; 
+      margin-bottom: 1rem; 
+      overflow-wrap: break-word; 
+      word-break: break-word;
+      max-width: 100%;
+    }
+    .hero-slideshow .hero-content p { 
+      font-size: 0.95rem; 
+      letter-spacing: 0.1rem;
+    }
+  }
 
 /* Progetti Grid & Filtering */
 .filter-nav {
@@ -837,7 +874,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Forzato a 3 colonne per riga */
   gap: 3rem;
-  transition: opacity 0.3s ease; /* Transizione più rapida */
+  transition: opacity 0.3s ease; /* Transizione piÃ¹ rapida */
 }
 
 
@@ -1094,7 +1131,7 @@ img {
 .gallery {
   display: grid !important;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 100px; /* Unità di base sottile per massimo controllo verticale */
+  grid-auto-rows: 100px; /* UnitÃ  di base sottile per massimo controllo verticale */
   grid-auto-flow: dense;
   gap: 2.5rem;
   max-width: 1400px;
@@ -1332,3 +1369,48 @@ body.modal-active {
 }
 
 /* Style Sync: Final Polish and Grey Border Fix Applied */
+
+/* --- Editorial Layout (Mobile Narratives) --- */
+.editorial-layout {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100%;
+}
+
+@media (min-width: 901px) {
+  .description-chunk-1, .description-chunk-2, .description-chunk-3 {
+    order: 2 !important;
+  }
+  .promoted-image-1, .promoted-image-2, .gallery {
+    order: 10 !important;
+  }
+  .promoted-image-1, .promoted-image-2 {
+    max-width: 1400px;
+    margin: 0 auto 2.5rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-slideshow, .project-hero { order: 1; }
+  .description-chunk-1 { order: 2; margin-bottom: 2rem !important; }
+  .promoted-image-1     { order: 3; margin-bottom: 2rem !important; }
+  .description-chunk-2 { order: 4; margin-bottom: 2rem !important; }
+  .promoted-image-2     { order: 5; margin-bottom: 2rem !important; }
+  .description-chunk-3 { order: 6; margin-bottom: 4rem !important; }
+  .gallery { order: 10; padding-top: 0 !important; }
+  .editorial-layout .project-description {
+     padding: 2rem 5% !important;
+     width: 100%;
+     text-align: left !important;
+  }
+  .promoted-image-1, .promoted-image-2 {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+}
+
+/* Style Sync: Final Editorial Narrative applied */
+
+

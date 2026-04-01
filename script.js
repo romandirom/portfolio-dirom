@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   // Smooth Body Fade-in
   document.body.classList.add('loaded');
 
@@ -210,7 +210,7 @@ document.addEventListener('error', function(e) {
     if (img.dataset.attemptCount === undefined) img.dataset.attemptCount = 0;
     
     // Lista estensioni comuni da provare (Aggiunto .tif come richiesto)
-    const extensions = ['.jpg', '.png', '.webp', '.jpeg', '.tif', '.tiff'];
+    const extensions = ['.webp', '.webp', '.webp', '.jpeg', '.tif', '.tiff'];
     const currentSrc = img.src;
     const baseSrc = currentSrc.substring(0, currentSrc.lastIndexOf('.'));
     const currentExt = currentSrc.substring(currentSrc.lastIndexOf('.')).toLowerCase();
@@ -381,3 +381,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
