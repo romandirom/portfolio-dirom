@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --site-padding: 2rem;
   --site-max-width: 1800px;
   /* Margini fluidi ridotti per evitare l'effetto "colonne vuote" */
@@ -1389,6 +1389,15 @@ body.modal-active {
     margin: 0 auto 2.5rem;
     width: 90%;
   }
+  /* Riduce lo spazio tra i chunk di testo su desktop per TUTTI i progetti */
+  .editorial-layout .project-description {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  /* Il primo blocco testo mantiene respiro dall'Hero */
+  .editorial-layout .description-chunk-1 {
+    padding-top: 3rem !important;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1425,6 +1434,36 @@ body.modal-active {
 }
 
 /* Style Sync: Final Editorial Narrative applied */
+
+/* --- Desktop Spacing: Full Text Continuity (Solo Omuundu) --- */
+@media (min-width: 901px) {
+  .omuundu-layout {
+    gap: 0 !important;
+  }
+  /* Tutti i chunk (1-5) vengono raggruppati come testo continuo */
+  .omuundu-layout .project-description {
+    order: 2 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  /* Primo chunk: respiro minimo dall'hero */
+  .omuundu-layout .description-chunk-1 {
+    padding-top: 2rem !important;
+  }
+  .omuundu-layout .project-description p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 1.2rem;
+  }
+  .omuundu-layout .project-hero::after {
+    display: none !important;
+  }
+}
+
 
 
 
